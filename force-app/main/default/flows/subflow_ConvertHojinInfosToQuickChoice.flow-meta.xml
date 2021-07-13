@@ -29,8 +29,8 @@
         <dataType>String</dataType>
         <expression>{!loop_HojinInfoCollection.name} &amp; &quot; (&quot;&amp;{!loop_HojinInfoCollection.corporatex5fnumber} &amp; &quot;) 〒&quot; &amp; {!loop_HojinInfoCollection.postalx5fcode} &amp; &quot; &quot; &amp; {!loop_HojinInfoCollection.location}</expression>
     </formulas>
-    <interviewLabel>gBizInfoの法人情報リストから選択肢用のラベルを抽出するサブフロー {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>gBizInfoの法人情報リストから選択肢用のラベルを抽出するサブフロー</label>
+    <interviewLabel>gBizInfoの法人情報リストから選択肢のラベルと値を設定するサブフロー {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>gBizInfoの法人情報リストから選択肢のラベルと値を設定するサブフロー</label>
     <loops>
         <name>loop_HojinInfoCollection</name>
         <label>法人情報のリストでループ</label>
