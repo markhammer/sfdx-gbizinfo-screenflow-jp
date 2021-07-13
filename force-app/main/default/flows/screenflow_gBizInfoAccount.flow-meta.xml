@@ -299,12 +299,6 @@
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>value</name>
-                <value>
-                    <elementReference>var_SelectedHojinNumber</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
                 <name>style_width</name>
                 <value>
                     <numberValue>1024.0</numberValue>
@@ -318,7 +312,10 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>var_SelectedHojinNumber</assignToReference>
+                <name>value</name>
+            </outputParameters>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
