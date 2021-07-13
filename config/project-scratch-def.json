@@ -1,6 +1,9 @@
 {
   "orgName": "shun company",
   "edition": "Developer",
+  "country": "JP",
+  "language": "ja",
+  "hasSampleData": true,
   "features": ["EnableSetPasswordInApi"],
   "settings": {
     "lightningExperienceSettings": {
