@@ -132,7 +132,7 @@
         </rules>
     </decisions>
     <description>取引先の名前からgBizInfoのAPIで法人情報を検索し、画面に選択肢として表示します。選択された法人情報に基づいて元の取引先を更新する画面フローです。</description>
-    <interviewLabel>法人情報取得画面 {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>法人情報を検索・更新する画面フロー {!$Flow.CurrentDateTime}</interviewLabel>
     <label>法人情報を検索・更新する画面フロー</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -351,7 +351,7 @@
     <subflows>
         <description>gBizInfoの法人情報リストを、動的なラジオボタンとして表示するために、選択肢の表示ラベル(名前・法人番号・住所の結合)と値(法人番号)という形に加工します。処理はサブフロー内で行われます。</description>
         <name>subflow_ConvertHojinInfosToQuickChoice</name>
-        <label>法人情報リストを選択肢に加工する</label>
+        <label>法人情報リストを選択肢に加工</label>
         <locationX>50</locationX>
         <locationY>1094</locationY>
         <connector>
@@ -381,7 +381,7 @@
         <connector>
             <targetReference>update_AccountBySelectedHojinInfo</targetReference>
         </connector>
-        <flowName>subflow_getElementFromHojinInfoCollection</flowName>
+        <flowName>subflow_GetElementFromHojinInfoCollection</flowName>
         <inputAssignments>
             <name>var_HojinInfoCollection</name>
             <value>
