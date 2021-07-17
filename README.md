@@ -1,5 +1,7 @@
 # 法人番号を検索する画面フロー
 
+https://qiita.com/shunkosa/items/6eab319282a64c414d1f
+
 ## 開発者向け情報
 
 ### セットアップ
