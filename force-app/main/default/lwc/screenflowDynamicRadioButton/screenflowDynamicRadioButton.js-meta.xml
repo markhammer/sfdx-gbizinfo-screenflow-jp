@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <masterLabel>動的ラジオボタン</masterLabel>
+    <description>画面フローで利用できる、コレクション変数を選択肢とするラジオボタンです</description>
+    <isExposed>true</isExposed>
+    <targets>
+      <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+       <targetConfig targets="lightning__FlowScreen">
+          <property name="required" label="必須項目" type="Boolean" role="inputOnly" />
+          <property name="label" label="表示ラベル" type="String" role="inputOnly" />
+          <property name="labelOptions" label="選択肢のリスト(表示ラベル)" type="String[]" role="inputOnly"/>
+          <property name="valueOptions" label="選択肢のリスト(値)" type="String[]" role="inputOnly" />  
+          <property name="value" label="選択結果" type="String" role="outputOnly"/>
+      </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

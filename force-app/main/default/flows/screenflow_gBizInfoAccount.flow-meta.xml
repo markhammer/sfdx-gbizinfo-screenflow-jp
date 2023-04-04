@@ -28,6 +28,22 @@
             <assignToReference>var_gBizInfoSuccessResponse</assignToReference>
             <name>200</name>
         </outputParameters>
+        <outputParameters>
+            <assignToReference>var_gBizInfoErrorResponse</assignToReference>
+            <name>401Exc</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>var_gBizInfoErrorResponse</assignToReference>
+            <name>403Exc</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>var_gBizInfoErrorResponse</assignToReference>
+            <name>404Exc</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>var_gBizInfoErrorResponse</assignToReference>
+            <name>defaultExc</name>
+        </outputParameters>
     </actionCalls>
     <apiVersion>52.0</apiVersion>
     <assignments>
@@ -126,12 +142,13 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>subflow_ConvertHojinInfosToQuickChoice</targetReference>
+                <targetReference>subflow_ConvertHojinInfosToStringCollections</targetReference>
             </connector>
             <label>1件以上</label>
         </rules>
     </decisions>
     <description>取引先の名前からgBizInfoのAPIで法人情報を検索し、画面に選択肢として表示します。選択された法人情報に基づいて元の取引先を更新する画面フローです。</description>
+    <environments>Default</environments>
     <interviewLabel>法人情報を検索・更新する画面フロー {!$Flow.CurrentDateTime}</interviewLabel>
     <label>法人情報を検索・更新する画面フロー</label>
     <processMetadataValues>
@@ -249,47 +266,29 @@
         </connector>
         <fields>
             <name>displayText_HojinInfoSelectionScreen</name>
-            <fieldText>&lt;p&gt;以下の法人情報が見つかりました。法人情報を選択して [完了] をクリックすると選択された情報で取引先が更新されます。&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;以下の法人情報が見つかりました。法人情報を選択して [次へ] をクリックすると選択された情報で取引先が更新されます。&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
-            <name>quickChoice_HojinInfoSelectionScreen</name>
-            <extensionName>c:fsc_quickChoiceFSC</extensionName>
+            <name>dynamic_RadioButton</name>
+            <extensionName>c:screenflowDynamicRadioButton</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
-                <name>displayMode</name>
+                <name>valueOptions</name>
                 <value>
-                    <stringValue>Radio</stringValue>
+                    <elementReference>var_HojinNumberCollection</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>inputMode</name>
-                <value>
-                    <stringValue>Dual String Collections</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>numberOfColumns</name>
-                <value>
-                    <stringValue>1</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>iconSize</name>
-                <value>
-                    <stringValue>small</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>choiceLabels</name>
+                <name>labelOptions</name>
                 <value>
                     <elementReference>var_HojinNameChoices</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>choiceValues</name>
+                <name>label</name>
                 <value>
-                    <elementReference>var_HojinNumberCollection</elementReference>
+                    <stringValue>法人情報</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -298,24 +297,9 @@
                     <booleanValue>true</booleanValue>
                 </value>
             </inputParameters>
-            <inputParameters>
-                <name>style_width</name>
-                <value>
-                    <numberValue>1024.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>masterLabel</name>
-                <value>
-                    <stringValue>法人情報</stringValue>
-                </value>
-            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <outputParameters>
-                <assignToReference>var_SelectedHojinNumber</assignToReference>
-                <name>value</name>
-            </outputParameters>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
@@ -347,14 +331,14 @@
     <status>Draft</status>
     <subflows>
         <description>gBizInfoの法人情報リストを、動的なラジオボタンとして表示するために、選択肢の表示ラベル(名前・法人番号・住所の結合)と値(法人番号)という形に加工します。処理はサブフロー内で行われます。</description>
-        <name>subflow_ConvertHojinInfosToQuickChoice</name>
+        <name>subflow_ConvertHojinInfosToStringCollections</name>
         <label>法人情報リストを選択肢に加工</label>
         <locationX>50</locationX>
         <locationY>1094</locationY>
         <connector>
             <targetReference>screen_HojinInfoSelection</targetReference>
         </connector>
-        <flowName>subflow_ConvertHojinInfosToQuickChoice</flowName>
+        <flowName>subflow_ConvertHojinInfosToStringCollections</flowName>
         <inputAssignments>
             <name>var_HojinInfoCollection</name>
             <value>
@@ -401,6 +385,14 @@
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>APIコールがエラーだったときの結果を格納する変数です。</description>
+        <name>var_gBizInfoErrorResponse</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
         <isOutput>false</isOutput>
     </variables>
     <variables>

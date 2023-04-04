@@ -3,27 +3,20 @@
     {
       "path": "force-app",
       "default": true,
-      "dependencies": [
-        {
-          "package": "04t8b000000uUznAAE"
-        },
-        {
-          "package": "04t5G000003rUyAQAU"
-        }
-      ],
       "package": "法人番号を検索する画面フロー",
-      "versionName": "ver 0.3",
-      "versionNumber": "0.3.0.NEXT"
+      "versionName": "ver 0.4",
+      "versionNumber": "0.4.0.NEXT"
     }
   ],
   "name": "gBizInfoScreenFlow",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "52.0",
+  "sourceApiVersion": "57.0",
   "packageAliases": {
     "法人番号を検索する画面フロー": "0Ho5G000000GmuOSAS",
     "法人番号を検索する画面フロー@0.1.0-2": "04t5G000003zeXbQAI",
     "法人番号を検索する画面フロー@0.2.0-1": "04t5G000003zeYAQAY",
-    "法人番号を検索する画面フロー@0.3.0-1": "04t5G000003RTTOQA4"
+    "法人番号を検索する画面フロー@0.3.0-1": "04t5G000003RTTOQA4",
+    "法人番号を検索する画面フロー@0.4.0-2": "04t5G000004kBPiQAM"
   }
 }

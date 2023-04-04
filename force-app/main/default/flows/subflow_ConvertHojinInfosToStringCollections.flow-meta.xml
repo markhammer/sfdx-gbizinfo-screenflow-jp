@@ -24,6 +24,8 @@
             <targetReference>loop_HojinInfoCollection</targetReference>
         </connector>
     </assignments>
+    <description>gBizInfoの法人情報リストから選択肢のラベルと値を抽出して、文字列のコレクション変数に設定するサブフロー</description>
+    <environments>Default</environments>
     <formulas>
         <name>formula_ChoiceLabel</name>
         <dataType>String</dataType>
